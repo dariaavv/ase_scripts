@@ -30,7 +30,8 @@ epsilonmm = np.array([epsilon0,0,0])
 qm_atom_types = ['CT1','CT2','CPH1','NR1','CPH1','CPH2','NR2','CT1','CT2','CPH1','NR1','CPH1','CPH2','NR2','CT1','CT2','CPH1','NR1','CPH1','CPH2','NR1','ZN','OH1','H','HA','HA','HR3','HR1','H','HA','HA','HR3','HR1','H','HA','HA','HR3','HR1','H','H','H','H','H','H','H','H','H','H']
 
 #2) get values for qm_atom_types
-df = pd.read_csv('charmm22_param', sep=' *', error_bad_lines=False, header=None, usecols=[0,2,3], engine='python')
+#df = pd.read_csv('charmm22_param', sep=' *', error_bad_lines=False, header=None, usecols=[0,2,3], engine='python')
+df = pd.read_csv('charmm22_param.csv', header=None, usecols=[0,2,3])
 df.columns = ['atom_type','min_epsilon','sigma']
 
 epsilonqm = []
