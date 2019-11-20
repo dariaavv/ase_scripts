@@ -9,8 +9,8 @@ import numpy as np
 from ase.calculators.tip3p import TIP3P, epsilon0, sigma0
 from ase.calculators.qmmm import EIQMMM, LJInteractionsGeneral
 from ase.calculators.turbomole import Turbomole
-#from ase.constraints import FixBondLengths
-#from ase.optimize import LBFGS
+from ase.constraints import FixBondLengths
+from ase.optimize import LBFGS
 from ase.io import read
 import ase.units as units
 import pandas as pd
@@ -56,9 +56,9 @@ print(mol.get_potential_energy())
 
 
 
-#mm_bonds = [(3 * i + j, 3 * i + (j + 1) % 3) for i in range(int((len(mol)-2) / 3)) for j in [0, 1, 2] if (3 * i + j) not in qm_idx]
-#mol.constraints = FixBondLengths(mm_bonds)
+mm_bonds = [(3 * i + j, 3 * i + (j + 1) % 3) for i in range(int((len(mol)-2) / 3)) for j in [0, 1, 2] if (3 * i + j) not in qm_idx]
+mol.constraints = FixBondLengths(mm_bonds)
 
-#opt = LBFGS(mol, trajectory='zn_inwatbox_LJgen_1.traj', restart='zn_inwatbox_LJgen_1.pckl')
-#opt.run(fmax=0.05)
+opt = LBFGS(mol, trajectory='zn_inwatbox_LJgen_1.traj', restart='zn_inwatbox_LJgen_1.pckl')
+opt.run(fmax=0.05)
 
